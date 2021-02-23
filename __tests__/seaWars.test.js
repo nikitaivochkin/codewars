@@ -41,22 +41,19 @@ const invalidField2 = [
   [1, 0, 0, 1, 0, 1],
 ];
 
-// describe('isValidField test', () => {
-//   test('test valid field 1', () => {
-//     expect(isValidField(validField1)).toBeTruthy();
-//   });
-//   test('test valid field 2', () => {
-//     expect(isValidField(validField2)).toBeTruthy();
-//   });
-//   test('test invalid field 1', () => {
-//     expect(isValidField(invalidField1)).toBeFalsy();
-//   });
-//   test('test invalid field 2', () => {
-//     expect(isValidField(invalidField2)).toBeFalsy();
-//   });
-// });
+const invalidField3 = [
+  [1, 0, 1, 0, 0, 1],
+  [1, 0, 1, 0, 1, 0],
+  [0, 0, 1, 0, 1, 0],
+  [1, 0, 0, 0, 0, 0],
+  [1, 0, 0, 1, 0, 1],
+  [1, 0, 0, 1, 0, 1],
+];
 
 describe('calcShipsCount test', () => {
+  test('test empty field', () => {
+    expect(calcShipsCount([])).toBe(0);
+  });
   test('test valid field 1', () => {
     expect(calcShipsCount(validField1)).toBe(3);
   });
@@ -65,6 +62,27 @@ describe('calcShipsCount test', () => {
   });
   test('test valid field 3', () => {
     expect(calcShipsCount(validField3)).toBe(7);
+  });
+});
+
+describe('isValidField test', () => {
+  test('test empty field', () => {
+    expect(isValidField([])).toBeTruthy();
+  });
+  test('test valid field 1', () => {
+    expect(isValidField(validField1)).toBeTruthy();
+  });
+  test('test valid field 2', () => {
+    expect(isValidField(validField2)).toBeTruthy();
+  });
+  test('test invalid field 1', () => {
+    expect(isValidField(invalidField1)).toBeFalsy();
+  });
+  test('test invalid field 2', () => {
+    expect(isValidField(invalidField2)).toBeFalsy();
+  });
+  test('test invalid field 3', () => {
+    expect(isValidField(invalidField3)).toBeFalsy();
   });
 });
 
