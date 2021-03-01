@@ -1,12 +1,20 @@
 import _ from 'lodash';
 
+const getFirstArr = ([first]) => first;
+const getLastElements = (matrix) => {
+  if (matrix.every((el) => !el.length)) {
+    return [];
+  }
+  return matrix.map((arr) => _.last(arr)).slice(1);
+};
+const getLastArr = (matrix) => (matrix.length === 1 ? [] : _.last(matrix).reverse().slice(1));
 const getFirstElements = (matrix) => {
+  if (matrix.length === 1 || matrix.every((el) => el.length === 1)) {
+    return [];
+  }
   const mappedElements = matrix.map(([first]) => first);
   return mappedElements.reverse().slice(1, mappedElements.length - 1);
 };
-const getLastElements = (matrix) => matrix.map((arr) => _.last(arr)).slice(1);
-const getFirstArr = ([first]) => first;
-const getLastArr = (matrix) => _.last(matrix).reverse().slice(1);
 
 const getFiltredArr = (matrix) => matrix
   .slice(1, matrix.length - 1)
@@ -23,7 +31,7 @@ const snail = (matrix) => {
   if (matrix.length === 1) {
     return matrix[0];
   }
-  
+
   const iter = (acc, inner) => {
     if (inner.length === 0) {
       return acc;

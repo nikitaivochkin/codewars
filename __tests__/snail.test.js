@@ -32,9 +32,28 @@ const expectMatrix3 =  [
   27, 26, 25, 24, 23, 22
 ];
 
+const matrix4 = [
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, 10, 11, 12],
+];
+
+const expectMatrix4 = [1, 2, 3, 4, 8, 12, 11, 10, 9, 5, 6, 7];
+
+const matrix5 = [
+  [undefined, '', null],
+  [true, false, 'foo'],
+  [[], {}, { key: 'bar' }],
+];
+
+const expectMatrix5 = [undefined, '', null, 'foo', { key: 'bar' }, {}, [], true, false];
+
 describe('test snail', () => {
   test('text empty matrix', () => {
     expect(snail([])).toEqual([]);
+  });
+  test('test border case', () => {
+    expect(snail([[1], [2], [3], [4]])).toEqual([1, 2, 3, 4]);
   });
   test('text short matrix', () => {
     expect(snail([[1]])).toEqual([1]);
@@ -47,5 +66,11 @@ describe('test snail', () => {
   });
   test('text matrix3', () => {
     expect(snail(matrix3)).toEqual(expectMatrix3);
+  });
+  test('text matrix4', () => {
+    expect(snail(matrix4)).toEqual(expectMatrix4);
+  });
+  test('text matrix5', () => {
+    expect(snail(matrix5)).toEqual(expectMatrix5);
   });
 });
